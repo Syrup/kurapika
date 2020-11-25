@@ -6,9 +6,12 @@ class AfkCommand extends Command {
 		super('afk', {
 			aliases: ['afk']
 		});
+		
+		this.name = "afk"
 	}
 
 	async exec(message) {
+	  return message.util.send("Maintenance...")
 		let args = message.content
 			.slice(this.client.commandHandler.prefix(message).length + 4)
 			.split(" ");

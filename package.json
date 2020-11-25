@@ -1,7 +1,7 @@
 {
-    "name": "discord-bot-template",
-    "version": "v2.0.0",
-    "description": "Guardian, a purpose built anti-nuke Discord bot.",
+    "name": "kurapika-bot",
+    "version": "v1.5.0",
+    "description": "Just bot",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,19 +9,26 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/plexidev/discord-bot-template.git"
+        "url": "git+https://github.com/Miouns/kurapika.git"
     },
     "author": "",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/plexidev/discord-bot-template/issues"
+        "url": "https://github.com/Miouns/kurapika/issues"
     },
-    "homepage": "https://github.com/plexidev/discord-bot-template#readme",
+    "homepage": "https://github.com/Miouns/kurapika#readme",
     "dependencies": {
+        "alexa-bot-api": "^0.1.4",
+        "axios": "^0.21.0",
         "discord-akairo": "8.1.0",
-        "discord.js": "12.3.1",
-        "dotenv": "8.2.0",
+        "discord.js": "12.5.0",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "moment": "^2.29.1",
+        "ms": "^2.1.2",
         "node-fetch": "2.6.1",
+        "node-superfetch": "^0.1.10",
+        "parse-ms": "^2.1.0",
         "path": "0.12.7",
         "quick.db": "7.1.2"
     }

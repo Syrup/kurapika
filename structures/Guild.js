@@ -28,6 +28,14 @@ Structures.extend('Guild', Guild => {
         delete(key) {
             return this.client.db.delete(`${this.id}.${key}`);
         }
+        
+        setChat(id) {
+          return this.client.db.set(`chat.${this.id}`, id)
+        }
+        
+        deleteChat(id) {
+          return this.client.db.delete(`chat.${this.id}`)
+        }
     }
 
     return GuildExt;

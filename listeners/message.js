@@ -1,21 +1,45 @@
-const { Listener } = require('discord-akairo');
+const { Listener } = require("discord-akairo");
+const Alexa = require("alexa-bot-api");
+const ai = new Alexa("aw2plm");
 
 module.exports = class MessageListener extends Listener {
-	constructor() {
-		super('message', {
-			emitter: 'client',
-			event: 'message'
-		});
-	}
-
-	exec(message) {
-	  let afk = message.mentions.users.first()
-	  
-	  if(message.content.split(" ").includes(`<@${Object.keys(this.client.db.get(`afk.${message.guild.id}`))[0]}>`) && message.guild.member(afk.id).getAfk()) message.channel.send("Sorry this user is AFK, reason: "+this.client.db.get(`afk.${message.guild.id}.${afk.id}`))
-	  
-	  if(message.author.id === Object.keys(this.client.db.get(`afk.${message.guild.id}`))[0]) {
-	    message.guild.member(message.author.id).deleteAfk()
-	    message.channel.send("I removed your AFK")
-	  }
-	}
-};
+  constructor() {
+    super("message", {
+      emitter: "client",
+      event: "message"
+    })
+  }
+  
+  async exec(msg) {
+    /*
+    let afk = msg.member.afk
+    let afkID = afk.user.id
+    if(afk) {
+      msg.member.deleteAfk()
+      
+      msg.channel.send(`<a:happy:768826021751291954> Welcome back, ${msg.member}`)
+    } else if(msg.content.includes(afkID)) {
+      msg.channel.send(`Sorry this user is currently AFK\n Reason: \`${afk.reason}\``)
+    }
+    */
+    
+    let channelID = this.client.db.get(`chat.${msg.guild.id}`);
+    
+    let channel = msg.guild.channels.cache.get(channelID)
+    
+    if(!channel) return
+    
+    if(!msg.channel.id === channelID) return
+    
+    if(msg.channel.id === channelID) {
+      if(msg.author.bot) return
+      let content = msg.content
+      
+      const reply = await ai.getReply(content)
+      
+      msg.channel.send(reply)
+    }
+    
+  }
+  
+}

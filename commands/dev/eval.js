@@ -2,11 +2,12 @@ const { Command } = require('discord-akairo');
 const fetch = require('node-fetch');
 const Akairo = require("discord-akairo");
 const Discord = require('discord.js');
+const axios = require("axios");
 
 class EvalCommand extends Command {
 	constructor() {
 		super('eval', {
-			aliases: ['eval'],
+			aliases: ['eval', 'e', 'ev'],
 			ownerOnly: true
 		});
 		this.name = "eval"
@@ -47,9 +48,8 @@ class EvalCommand extends Command {
 	}
 
 	async exec(message) {
-		let code = message.content
-			.slice(this.client.commandHandler.prefix(message).length + 4)
-			.trim();
+	  let args = message.content.slice(message.guild.prefix.length).trim().split(/ +/).slice(1)
+		let code = args.join(" ")
 		try {
 			const evaled = eval(code);
 			const clean = await this.clean(this.client, evaled);

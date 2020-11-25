@@ -7,6 +7,8 @@ class HugCommand extends Command {
     super("hug", {
       aliases: ["hug"]
     })
+    
+    this.name = "hug"
   }
   
   async exec(msg) {

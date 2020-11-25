@@ -1,15 +1,14 @@
-const { Structures } = require("discord-akairo");
+const { Structures } = require('discord.js');
 
-Structures.extend("Message", Message => {
-  class MessageExt extends Message {
-    constructor(...args) {
-      super(...args)
-    }
-    
-    get say(args) {
-      return this.util.send(args)
-    }
-  }
-  
-  return MessageExt;
-})
+Structures.extend('Message', Message => {
+	class KurapikaMessage extends Message {
+		constructor(...args) {
+			super(...args);
+		}
+		get test() {
+		  return "b";
+		}
+	}
+
+	return KurapikaMessage;
+});

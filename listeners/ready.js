@@ -10,5 +10,6 @@ module.exports = class ReadyListener extends Listener {
 
     exec() {
         console.log(`${this.client.user.tag} is now ready!`);
+        
     }
 };

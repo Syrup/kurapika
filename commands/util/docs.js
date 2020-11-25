@@ -7,6 +7,8 @@ class DocsCommand extends Command {
 		super('docs', {
 			aliases: ['docs']
 		});
+		
+		this.name = "docs"
 	}
 
 	async exec(msg) {
