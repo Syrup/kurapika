@@ -4,12 +4,12 @@ const { CommandHandler } = require("discord-akairo");
 const { prefix } = require("./config.js");
 const path = require("path");
 
-const ModClient = require('./core/client.js');
-const ModUtil = require("./core/ClientUtil.js");
+const KurapikaClient = require('./core/KurapikaClient.js');
+const KurapikaClientUtil = require("./core/KurapikaClientUtil.js");
 const express = require("express");
 const app = express();
-const client = new ModClient();
-client.util = new ModUtil();
+const client = new KurapikaClient();
+client.util = new KurapikaClientUtil();
 
 app.get("/", (req, res) => {
   res.send("Ready!")

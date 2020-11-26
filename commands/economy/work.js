@@ -13,15 +13,16 @@ class WorkCommand extends Command {
   
   exec(msg) {
     let cold = this.client.db.get(`economy.${msg.guild.id}.${msg.author.id}.cooldown`)
-    let timeout = 60000;
-    let cooldown = timeout - (Date.now() - cold) > 0
-    if(cooldown) {
+    let timeout = 600000;
+    let cooldown = timeout - (Date.now() - cold)
+    if(cooldown > 0) {
       let time = ms(cooldown)
       
-      msg.util.send(`Please wait until ${time.minute}m ${time.second}s because you have been work`)
+      return msg.util.send(`Please wait until ${time.minutes}m ${time.seconds}s because you have been work`)
     } else {
       let earn = Math.floor(Math.random() * 500) + 1
-      msg.util.send(`You worked and earn ${earn}`)
+      msg.member.setMoney(earn)
+      msg.util.send(`You worked and earn \`${earn}\``)
     }
     
     this.client.db.set(`economy.${msg.guild.id}.${msg.author.id}.cooldown`, Date.now())

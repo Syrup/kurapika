@@ -4,9 +4,12 @@ Structures.extend('Message', Message => {
 	class KurapikaMessage extends Message {
 		constructor(...args) {
 			super(...args);
+
+			this.say = this.say
 		}
-		get test() {
-		  return "b";
+		
+		say(msg) {
+		  return this.channel.send(msg)
 		}
 	}
 

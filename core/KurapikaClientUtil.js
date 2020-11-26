@@ -1,11 +1,10 @@
 const { ClientUtil } = require('discord-akairo');
-const ModClient = require("./client.js");
 const axios = require('axios');
-class ModUtil extends ClientUtil {
-	constructor() {
+class KurapikaClientUtil extends ClientUtil {
+	constructor(client) {
 		super();
 
-		this.client = new ModClient();
+		this.client = client;
 	}
 
 	async webhook(url, msg, embed) {
@@ -16,11 +15,12 @@ class ModUtil extends ClientUtil {
 			username: web.name,
 			avatar_url: web.avatar,
 			content: msg,
-			embeds: [embed]
 		};
+		
+		if(embed) param.embeds = [embed]
 
 		return axios.post(url, param);
 	}
 }
 
-module.exports = ModUtil;
+module.exports = KurapikaClientUtil;

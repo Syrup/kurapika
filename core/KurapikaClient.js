@@ -6,13 +6,15 @@ const {
 } = require('discord-akairo');
 const { ownerID, defaultPrefix } = require('../config.js');
 const config = require("../config.js");
+const KurapikaClientUtil = require("./KurapikaClientUtil.js")
 const db = require('quick.db');
 const Utils = require('./utils.js');
-
 require('../structures/Guild.js');
 require('../structures/GuildMember.js');
+require('../structures/Message.js');
+require('../structures/User.js');
 
-module.exports = class GuardianClient extends AkairoClient {
+module.exports = class KurapikaClient extends AkairoClient {
 	constructor() {
 		super(
 			{
@@ -36,6 +38,7 @@ module.exports = class GuardianClient extends AkairoClient {
 			directory: path.join(__dirname, '..', 'listeners/')
 		});
 		
+		this.util = new KurapikaClientUtil(this)
 		this.config = config
 		this.db = db;
 		this.Utils = new Utils(this);
