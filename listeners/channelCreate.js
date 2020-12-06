@@ -9,7 +9,7 @@ module.exports = class ChannelCreateListener extends Listener {
     }
 
     async exec(channel) {
-        console.log(
+        this.client.logger.log('info', 
             `The channel ${channel.name} has been created in ${channel.guild.name}`
         );
     }

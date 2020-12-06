@@ -1,10 +1,13 @@
 const { Structures } = require('discord.js');
 const config = require("../config.js")
+const MusicHandler = require("../core/KurapikaMusicHandler.js")
 
 Structures.extend('Guild', Guild => {
     class GuildExt extends Guild {
         constructor(...args) {
             super(...args);
+            
+            this.music = new MusicHandler(this);
         }
 
         // Returns the Guild prefix

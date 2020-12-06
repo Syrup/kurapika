@@ -9,8 +9,7 @@ module.exports = class GuildMemberRemoveListener extends Listener {
     }
 
     async exec(member) {
-        console.log(
-            `${member.user.tag} has been unbanned in ${member.guild.name}`
+        this.client.logger.log('info', `${member.user.tag} has been kicked in ${member.guild.name}`
         );
     }
 };

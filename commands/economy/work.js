@@ -9,6 +9,9 @@ class WorkCommand extends Command {
     })
     
     this.name = "work"
+    this.description = "earn a money"
+    this.usage = "work"
+    this.example = "work"
   }
   
   exec(msg) {

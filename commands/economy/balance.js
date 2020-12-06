@@ -8,6 +8,9 @@ class BalanceCommand extends Command {
     })
     
     this.name = "balance"
+    this.description = "check your balance or your friend balance"
+    this.usage = "balance [@user]"
+    this.example = "balance"
   }
   
   exec(msg) {

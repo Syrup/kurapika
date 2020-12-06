@@ -11,7 +11,10 @@ class PrefixCommand extends Command {
             ],
             channel: 'guild'
         });
+        this.description = "Change bot prefix for this server"
         this.name = "prefix"
+        this.usage = "prefix <new prefix>"
+        this.example = "prefix ku."
     }
 
     async exec(message, args) {

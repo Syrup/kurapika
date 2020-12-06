@@ -59,6 +59,15 @@ Structures.extend('GuildMember', GuildMember => {
 		setBank(amount) {
 		  return this.client.db.add(`economy.${this.guild.id}.${this.id}.bank`, amount)
 		}
+
+		removeMoney(amount) {
+		  return this.client.db.subtract(`economy.${this.guild.id}.${this.id}.money`, amount)
+		}
+		
+		removeBank(amount) {
+		  return this.client.db.subtract(`economy.${this.guild.id}.${this.id}.bank`, amount)
+		}
+
 		
 	}
 

@@ -1,0 +1,21 @@
+const fetch = require("node-fetch");
+
+class Github {
+  constructor(name) {
+    this.name = name
+    this.baseURL = "https://api.github.com/users/"
+  }
+  
+  async getName() {
+    let res = await fetch(this.baseURL+this.name).then(res => res.json())
+    return res.login;
+  }
+  
+  async getInfo() {
+    let res = await fetch(this.baseURL+this.name).then(res => res.json())
+    return res
+  }
+  
+}
+
+module.exports = Github;

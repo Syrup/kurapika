@@ -5,16 +5,38 @@ const qs = require('querystring');
 class DocsCommand extends Command {
 	constructor() {
 		super('docs', {
-			aliases: ['docs']
+			aliases: ['docs'],
+			args: [
+				{
+					id: 'docs',
+					type: 'string',
+					match: 'text',
+					limit: 3000,
+					prompt: {
+						start: msg => `${msg.member} Would you like to search?\nType: <name> <sources>`
+					}
+				},
+				{
+				  key: "flag",
+				  type: "options"
+				}
+			]
 		});
-		
-		this.name = "docs"
+
+		this.name = 'docs';
+		this.description =
+			'Search documentation of discord.js\n*Supported discord-rpc, discord-akairo, discord.js-commando*';
+		this.usage = 'docs <argument> [stable|master|rpc|commando|akairo-master]';
+		this.example = 'docs client stable';
 	}
 
-	async exec(msg) {
-		let args = msg.content.split(" ").slice(
-			this.client.commandHandler.prefix(msg) + 4
-		);
+	async exec(msg, { docs }) {
+	  console.log(docs)
+		let args = msg.content
+		.slice(msg.guild.prefix)
+		.trim()
+		.split(/ +/)
+		.slice(1)
 
 		const SOURCES = [
 			'stable',
@@ -25,18 +47,15 @@ class DocsCommand extends Command {
 			'akairo-master',
 			'11.5-dev'
 		];
-
-		if (args.length < 1) return msg.util.send('No query provided');
-		let source = SOURCES.includes(args.slice(-1)[0])
-			? args.pop()
-			: 'stable';
+		
+		let source = SOURCES.includes(args.slice(-1)[0]) ? args.pop() : 'stable';
 		if (source === '11.5-dev') {
 			source = `https://raw.githubusercontent.com/discordjs/discord.js/docs/${source}.json`;
 		}
 		try {
 			const queryString = qs.stringify({
 				src: source,
-				q: args.join(' ')
+				q: docs
 			});
 			const { body: embed } = await fetch.get(
 				`https://djsdocs.sorta.moe/v2/embed?${queryString}`

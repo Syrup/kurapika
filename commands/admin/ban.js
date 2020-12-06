@@ -7,6 +7,9 @@ class BanCommand extends Command {
     })
     
     this.name = "ban"
+    this.description = "Ban someone"
+    this.usage = "ban <@user> [reason]"
+    this.example = "ban @someuser#1234 break rules"
   }
   
   exec(message) {

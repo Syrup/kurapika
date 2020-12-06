@@ -7,6 +7,9 @@ class BinaryComand extends Command {
 		});
 		
 		this.name = "binary"
+		this.description = "encode or decode message in binary"
+		this.example = "binary encode hello world"
+		this.usage = "binary <encode|decode> <message>"
 	}
 
 	encode(char) {

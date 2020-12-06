@@ -9,6 +9,9 @@ class ChatCommand extends Command {
     })
     
     this.name = "chat"
+    this.description = "enable/disable ChatBot"
+    this.usage = "chat <enable|disable> <#channel>"
+    this.example = "chat enable #chatbot"
   }
   
   async exec(msg) {

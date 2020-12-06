@@ -8,6 +8,9 @@ class AfkCommand extends Command {
 		});
 		
 		this.name = "afk"
+		this.description = "Set your afk.\nthis command is **Maintenance**"
+		this.usage = "afk <reason>"
+		this.example = "afk breakfast"
 	}
 
 	async exec(message) {

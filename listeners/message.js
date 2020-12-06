@@ -23,6 +23,7 @@ module.exports = class MessageListener extends Listener {
     }
     */
     
+    
     let channelID = this.client.db.get(`chat.${msg.guild.id}`);
     
     let channel = msg.guild.channels.cache.get(channelID)

@@ -9,7 +9,7 @@ module.exports = class ChannelDeleteListener extends Listener {
     }
 
     async exec(channel) {
-        console.log(
+        this.client.logger.log('info', 
             `The channel ${channel.name} has been deleted in ${channel.guild.name}`
         );
     }

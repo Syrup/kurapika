@@ -7,7 +7,11 @@ class KissCommand extends Command {
 		super('kiss', {
 			aliases: ['kiss']
 		});
+		
 		this.name = "kiss"
+		this.description = "Kiss someone"
+    this.usage = "kiss <@user>"
+    this.example = "kiss @Kurapika#1116"
 	}
 
 	async exec(message) {

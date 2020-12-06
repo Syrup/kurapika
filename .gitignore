@@ -1,0 +1,6 @@
+node_modules
+.env
+log
+json.sqlite
+RankCard.png
+commands/music

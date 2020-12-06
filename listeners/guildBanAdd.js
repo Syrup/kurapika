@@ -9,6 +9,6 @@ module.exports = class GuildBanAddListener extends Listener {
     }
 
     async exec(guild, user) {
-        console.log(`${user.tag} has been banned in ${guild.name}`);
+        this.client.logger.log('info', `${user.tag} has been banned in ${guild.name}`);
     }
 };

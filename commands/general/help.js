@@ -8,6 +8,8 @@ class HelpCommand extends Command {
 			aliases: ['help', 'h', '?']
 		});
 		this.name = 'help';
+		this.description = "Show list of commands"
+		this.usage = "help [command name]"
 	}
 
 	exec(message) {
@@ -38,7 +40,7 @@ class HelpCommand extends Command {
 				
 				let command = new (require(`../${category}/${cmd}`));
 				var name = command.name;
-				var aliases = command.aliases;
+				var aliases = command.aliases.map(x => `\`${x}\``);
 				var description = command.description;
 				var cmdUsage = command.usage;
 				var cmdEx = command.example;
@@ -57,8 +59,11 @@ class HelpCommand extends Command {
 					example: cmdEx,
 					usage: cmdUsage
 				};
-
-				cmdDetail[name] = detail;
+				
+				
+				command.aliases.forEach(x => {
+				  cmdDetail[x] = detail
+				})
 			});
 		});
 		if (!args[0]) {
@@ -69,6 +74,7 @@ class HelpCommand extends Command {
 					`Req by: ${message.author.tag}`,
 					message.author.displayAvatarURL()
 				)
+				.setDescription(`Type \`${message.guild.prefix}help [command name]\` for more informations`)
 				.setTimestamp()
 				.setColor('RANDOM');
 
@@ -86,18 +92,21 @@ class HelpCommand extends Command {
 				.setTimestamp()
 				.setColor('RANDOM')
 				.setFooter(
-					"don't includes this <> or this [], if you see this <> = required, if you see this [] = optional"
+					"don't includes this <> or this []\n<> = required\n[] = optional"
 				);
 
 			for (let cmd in cmdDetail) {
-				i = i++;
-				let command = cmdDetail[args[0]];
+			  let command;
+			  command = cmdDetail[args[0]];
+			  if(!command) return message.util.send("Not found.")
+			  
 				let name = command.name;
-				let aliases = command.aliases;
+				let aliases = command.aliases.slice(1);
 				let usage = command.usage;
 				let ex = command.example;
 				let desc = command.description;
 				
+				if(i > 1) break;
 				
 				if(!command.name === name) return;
 				if(!command.description === desc) return;
@@ -110,12 +119,11 @@ class HelpCommand extends Command {
 				em.setDescription(desc);
 				em.addField('Aliases: ', aliases.join(' - ') || 'No Aliases provided');
 				em.addField('Usage: ', usage || 'No Usage provided');
-				em.addField('Example: ', usage || 'No Example provided');
+				em.addField('Example: ', ex || 'No Example provided');
+				i++
 			}
-			console.log(cmdDetail)
 			message.util.send(em);
 		}
-		console.log(cmdDetail)
 	}
 }
 

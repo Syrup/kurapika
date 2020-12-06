@@ -9,6 +9,9 @@ class HugCommand extends Command {
     })
     
     this.name = "hug"
+    this.description = "Hug someone"
+    this.usage = "hug <@user>"
+    this.example = "hug @Kurapika#1116"
   }
   
   async exec(msg) {

@@ -4,29 +4,49 @@ const { MessageEmbed } = require("discord.js");
 class GayrateCommand extends Command {
   constructor() {
     super("gayrate", {
-      aliases: ['gayrate', "gay"]
+      aliases: ['gayrate', "gay"],
+      args: [
+        {
+          id: "member",
+          type: 'string',
+					match: 'text',
+					limit: 3000,
+					prompt: {
+						start: msg => `${msg.member}, Who?`
+					}
+        }
+      ]
     })
     this.name = "gayrate"
+    this.usage = "gayrate <user>"
   }
   
-  async exec(message) {
-    const user = message.mentions.users.first()
+  async exec(message, { member }) {
+    const args = message.content
+    .slice(message.guild.prefix)
+    .trim()
+    .split(/ +/)
+    .slice(1)
+    
+    console.log(member)
+    
+    const user = await this.client.util.getMember(message, member);
     
     
-    if(!user) return message.util.send("Mention Someone")
+    
     
     const gay = Math.floor(Math.random() * 100)
     
     let em = new MessageEmbed()
-    .setTitle(user.username+" gayrate")
+    .setTitle(user.user.username+" gayrate")
     .setDescription(`<a:loading:393852367751086090> Counting..`)
     .setTimestamp()
     .setColor("RANDOM")
     .setFooter(`Req by: ${message.author.tag}`)
     
     const em1 = new MessageEmbed()
-    .setTitle(user.username+" gayrate")
-    .setDescription(`${user} is ${gay}% 🏳🌈`)
+    .setTitle(user.user.username+" gayrate")
+    .setDescription(`${user.user} is ${gay}% 🏳🌈`)
     .setTimestamp()
     .setColor("RANDOM")
     .setFooter(`Req by: ${message.author.tag}`)

@@ -9,6 +9,9 @@ class PinterestCommand extends Command {
 		});
 		
 		this.name = "pinterest"
+		this.description = "search pinterest image"
+		this.usage = "pinterest <name>"
+		this.example = "pinterest minecraft"
 	}
 	
 	async getImage(key) {/*

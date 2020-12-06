@@ -9,7 +9,7 @@ module.exports = class RoleDeleteListener extends Listener {
     }
 
     async exec(role) {
-        console.log(
+        this.client.logger.log('info', 
             `The role ${role.name} has been deleted in ${role.guild.name}`
         );
     }

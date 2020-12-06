@@ -7,6 +7,9 @@ class KickCommand extends Command {
     })
     
     this.name = "kick"
+    this.description = "Kick someone"
+    this.usage = "kick <@user> [reason]"
+    this.example = "kick @someuser#1234 break rules"
   }
   
   exec(message) {

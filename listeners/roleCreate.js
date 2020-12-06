@@ -9,7 +9,7 @@ module.exports = class RoleCreateListener extends Listener {
     }
 
     async exec(role) {
-        console.log(
+        this.client.logger.log('info', 
             `The role ${role.name} has been created in ${role.guild.name}`
         );
     }

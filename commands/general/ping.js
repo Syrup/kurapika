@@ -6,10 +6,13 @@ class PingCommand extends Command {
       aliases: ["ping"]
     })
     this.name = "ping"
+    this.description = "pong!"
   }
   
   async exec(message) {
-    return message.util.send(`Pong! \`${this.client.ws.ping}\``)
+    const m = await message.util.send("pinging..")
+    const ping = Math.round(m.createdTimestamp - message.createdTimestamp);
+    return message.util.send(`:ping_pong: Pong! \`${this.client.ws.ping}\`ms\n:fire: \`${ping}\`ms`)
   }
 }
 
