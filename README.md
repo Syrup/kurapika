@@ -24,5 +24,5 @@ let opt = {
   content: "this is optional"
 }
 
-this.client.util.webhook(url, em embed, opt)
+this.client.util.webhook(url, embed, opt)
 ```
