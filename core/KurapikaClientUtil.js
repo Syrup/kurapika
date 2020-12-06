@@ -52,7 +52,7 @@ class KurapikaClientUtil extends ClientUtil {
 		return arr;
 	}
 
-	async webhook(url, msg, opt) {
+	async webhook(url, msg, opt={}) {
 		let { data: web } = await axios.get(url);
 		
 		if(!typeof opt === "object") return Error("That arguments `opt` must be object");
