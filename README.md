@@ -20,7 +20,7 @@ let embed = new MessageEmbed()
 
 let opt = {
   username: "Happy",
-  avatar_url: message.author.displayAvatarURL()
+  avatar_url: message.author.displayAvatarURL(),
   content: "this is optional"
 }
 
