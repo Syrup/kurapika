@@ -42,6 +42,15 @@ this.client.util.getMember(message, name)
 
 #### Example
 ```js
+(async () => {
+  let member = await this.client.util.getMember(message, "Syrup")
+  return member
+})
+```
+
+or
+
+```js
 async function user(message, name) {
   const member = await this.client.util.getMember(message, name)
   return member
