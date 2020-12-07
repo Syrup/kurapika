@@ -45,7 +45,7 @@ this.client.util.getMember(message, name)
 (async () => {
   let member = await this.client.util.getMember(message, "Syrup")
   return member
-})
+})()
 ```
 
 or
