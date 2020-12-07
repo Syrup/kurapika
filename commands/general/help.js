@@ -5,7 +5,7 @@ const fs = require('fs');
 class HelpCommand extends Command {
 	constructor() {
 		super('help', {
-			aliases: ['help', 'h', '?']
+			aliases: ["help", "h", "?"]
 		});
 		this.name = 'help';
 		this.description = "Show list of commands"
