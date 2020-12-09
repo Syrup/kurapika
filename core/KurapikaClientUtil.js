@@ -52,13 +52,14 @@ class KurapikaClientUtil extends ClientUtil {
 		return arr;
 	}
 
-	async webhook(url, msg, opt={}) {
+	async webhook(url, msg, opt = {}) {
 		let { data: web } = await axios.get(url);
-		
-		if(!typeof opt === "object") return Error("That arguments `opt` must be object");
-		
-		if(typeof msg === "object") opt["embeds"] = [msg]
-		else opt["content"] = msg
+
+		if (!typeof opt === 'object')
+			return Error('That arguments `opt` must be object');
+
+		if (typeof msg === 'object') opt['embeds'] = [msg];
+		else opt['content'] = msg;
 
 		return axios.post(url, opt);
 	}
@@ -87,7 +88,7 @@ class KurapikaClientUtil extends ClientUtil {
 		if (!target) {
 			return message.channel.send({
 				embed: {
-					description: "User Not Found",
+					description: 'User Not Found',
 					color: 'RED'
 				}
 			});
@@ -97,9 +98,26 @@ class KurapikaClientUtil extends ClientUtil {
 	}
 
 	getChannel(msg, channel) {
-		let result = /<#(\d+)>/gi.exec(channel)[1];
+		let result;
+		let guildChannel;
 
-		let guildChannel = msg.guild.channels.cache.find(result);
+		if (channel.startsWith('<#')) {
+			result = /<#(\d+)>/gi.exec(channel)[1];
+			guildChannel = msg.guild.channels.cache.get(result);
+		} else {
+			result = channel;
+
+			guildChannel = msg.guild.channels.cache.find(x => x.name.includes(result));
+		}
+
+		if (!guildChannel)
+			return msg.channel.send({
+				embed: {
+					description: 'Channel Not Found',
+					color: 'RED'
+				}
+			});
+
 		return guildChannel;
 	}
 }

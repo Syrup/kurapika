@@ -39,7 +39,7 @@ class HelpCommand extends Command {
 				if(beta === true) return
 				
 				let command = new (require(`../${category}/${cmd}`));
-				var name = command.name;
+				var name = command.name || command.options;
 				var aliases = command.aliases.map(x => `\`${x}\``);
 				var description = command.description;
 				var cmdUsage = command.usage;

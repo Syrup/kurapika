@@ -36,8 +36,8 @@ return [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 this.client.util.getMember(message, name)
 ```
 
-- message - `Message`
-- name - `User Name`
+- message - [Message](https://discord.js.org/#/docs/main/stable/class/Message)
+- name - `User Name` | `Mention`
 
 
 #### Example
