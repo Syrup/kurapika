@@ -29,8 +29,13 @@ class GayrateCommand extends Command {
     .slice(1)
     
     console.log(member)
+    let user;
     
-    const user = await this.client.util.getMember(message, member);
+    if(member.startsWith("<@")) {
+      user = await this.client.util.getMember(message, member.match(/<@(\d+)>/)[1])
+    } else {
+      user = await this.client.util.getMember(message, member);
+    }
     
     
     

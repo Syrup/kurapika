@@ -1,0 +1,14 @@
+const { Command } = require("discord-akairo");
+const { MessageEmbed } = require("discord.js");
+
+class SlowmodeCommand extends Command {
+  constructor() {
+    super("slowmode", {
+      aliases: ["slowmode", "setslowmode", "setslow", "slow"]
+    })
+    
+    this.name = "slowmode"
+  }
+  
+  async exec()
+}

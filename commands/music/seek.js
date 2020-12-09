@@ -6,20 +6,20 @@ class SeekCommand extends Command {
 		super('seek', {
 			aliases: ['seek']
 		});
-		
-		this.name = "seek";
+
+		this.name = 'seek';
 		// this.description = "Pause the music";
 		// this.example = "pause";
 		// this.usage = "pause";
 	}
 
 	async exec(msg) {
-	  const args = msg.content
-	  .slice(msg.guild.prefix)
-	  .trim()
-	  .split(/ +/)
-	  .slice(1)
-	  
+		const args = msg.content
+			.slice(msg.guild.prefix)
+			.trim()
+			.split(/ +/)
+			.slice(1);
+
 		const util = this.client.util;
 		const { music } = msg.guild;
 		if (!music.player || !music.player.playing)
