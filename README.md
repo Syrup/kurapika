@@ -4,7 +4,8 @@
 ###### Environment Setup
 rename `.env-example` to `.env`
 now open `.env` file and fill in each variable according to the instructional
----
+
+
 ###### Bot Configuration
 open `config.js` file
 now replace `YOUR DISCORD ID, YOUR DISCORD ID 2` with your discord id and replace `YOUR DISCORD ID 2` your dev discord id
