@@ -1,4 +1,4 @@
 module.exports = {
-    defaultPrefix: 'ku.',
-    ownerID: ['681843628317868049', '744822067740016640']
+    defaultPrefix: 'prefix',
+    ownerID: ['YOUR DISCORD ID 1', 'YOUT DISCORD ID 2']
 };
