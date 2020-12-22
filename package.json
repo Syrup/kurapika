@@ -22,7 +22,7 @@
         "@discordjs/opus": "^0.3.3",
         "@lavacord/discord.js": "0.0.7",
         "alexa-bot-api": "^0.1.4",
-        "axios": "^0.21.0",
+        "axios": "^0.21.1",
         "canvacord": "^5.0.8",
         "captcha-canvas": "^2.2.2",
         "child_process": "^1.0.2",
