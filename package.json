@@ -36,7 +36,7 @@
         "genius-lyrics": "^4.1.4",
         "genius-lyrics-api": "^3.0.3",
         "lavacord": "^1.1.9",
-        "mailist": "^1.0.2",
+        "mailist": "^1.0.3",
         "moment": "^2.29.1",
         "mongodb": "^3.6.3",
         "mongoose": "^5.11.8",
