@@ -1,6 +1,6 @@
 {
     "name": "kurapika-bot",
-    "version": "v1.6.0",
+    "version": "v2.0.0",
     "description": "Just bot",
     "main": "index.js",
     "scripts": {
