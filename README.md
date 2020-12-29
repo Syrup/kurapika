@@ -74,6 +74,9 @@ async function user(message, name) {
 user(message, "Kurapika")
 ```
 
+
 return [GuildMember](https://discord.js.org/#/docs/main/stable/class/GuildMember)
+
+
 ---
 [![Discord Bots](https://top.gg/api/widget/707651800072716360.svg)](https://top.gg/bot/707651800072716360)
