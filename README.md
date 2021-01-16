@@ -89,11 +89,11 @@ this.client.util.getChannel(message.guild, "general", true)
 | Name          | Type                                                                                                | Default | Description                                 | Required |
 |---------------|-----------------------------------------------------------------------------------------------------|---------|---------------------------------------------|----------|
 | guild         | [Guild](https://discord.js.org/#/docs/main/stable/class/Guild)                                      | `none`  | Guild to check                              | `true`   |
-| channel       | Snowflake or Channel Name                                                                           | `none`  | may be the channel id or name               | `true`   |
+| channel       | Snowflake or Channel Name                                                                           | `none`  | maybe the channel id or name               | `true`   |
 | caseSensitive | [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | `false` | Makes checking by name case sensitive.      | `false`  |
 | wholeWord     | [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | `false` | Makes finding by name match full word only. | `false`  |
 
-> This may be the same as [resolveChannel](https://discord-akairo.github.io/#/docs/main/master/class/ClientUtil?scrollTo=resolveChannel) but I have kept it simple :)
+> This maybe the same as [resolveChannel](https://discord-akairo.github.io/#/docs/main/master/class/ClientUtil?scrollTo=resolveChannel) but I have kept it simple :)
 
 return [Channel](https://discord.js.org/#/docs/main/stable/class/Channel)
 
