@@ -74,9 +74,16 @@ async function user(message, name) {
 user(message, "Kurapika")
 ```
 
+return [GuildMember](https://discord.js.org/#/docs/main/stable/class/GuildMember)
+
 ### getChannel
 ```js
 this.client.util.getChannel(guild, channel, caseSensitive, wholeWord)
+```
+
+#### Example
+```js
+this.client.util.getChannel(message.guild, "general", true)
 ```
 
 | Name          | Type                                                                                                | Default | Description                                 | Required |
@@ -88,6 +95,7 @@ this.client.util.getChannel(guild, channel, caseSensitive, wholeWord)
 
 > This may be the same as [resolveChannel](https://discord-akairo.github.io/#/docs/main/master/class/ClientUtil?scrollTo=resolveChannel) but I have kept it simple :)
 
-return [GuildMember](https://discord.js.org/#/docs/main/stable/class/GuildMember)
+return [Channel](https://discord.js.org/#/docs/main/stable/class/Channel)
+
 ---
 [![Discord Bots](https://top.gg/api/widget/707651800072716360.svg)](https://top.gg/bot/707651800072716360)
