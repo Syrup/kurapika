@@ -22,9 +22,11 @@ and replace `prefix` with your discord prefix
 this.client.util.webhook(urlWebhook, message, opt)
 ```
 
-- `urlWebhook` - Your Webhook URL
-- `message` - Can be embed or message
-- `opt` - type [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+| Name       | Type                                                                                              | Default | Description             | Required |
+|------------|---------------------------------------------------------------------------------------------------|---------|-------------------------|----------|
+| urlWebhook | **String**                                                                                        | `none`  | Your webhook URL        | `true`   |
+| message    | [MessageEmbed](https://discord.js.org/#/docs/main/stable/class/MessageEmbed) or **String**        | `none`  | Can be embed or message | `true`   |
+| opt        | [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) | `none`  | Options                 | `false`  |
 
 
 #### Example
@@ -51,8 +53,10 @@ return [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 this.client.util.getMember(message, name)
 ```
 
-- message - [Message](https://discord.js.org/#/docs/main/stable/class/Message)
-- name - `User Name` | `Mention`
+| Name    | Type                                                               | Default | Description      | Required |
+|---------|--------------------------------------------------------------------|---------|------------------|----------|
+| message | [Message](https://discord.js.org/#/docs/main/stable/class/Message) | `none`  | message          | `true`   |
+| name    | Snowflake or Username                                              | `none`  | maybe id or name | `true`   |
 
 
 #### Example
