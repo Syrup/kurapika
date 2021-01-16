@@ -1,7 +1,7 @@
 const { Rest } = require('lavacord');
 const util = require('./utils');
 
-module.exports = class MusicHandler {
+module.exports = class KurapikaMusicHandler {
 	/** @param {import("discord.js").Guild} guild */
 	constructor(guild) {
 		this.guild = guild;

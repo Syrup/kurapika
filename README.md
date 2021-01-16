@@ -10,8 +10,8 @@ now open `.env` file and fill in each variable according to the instructional
 
 ###### Bot Configuration
 open `config.js` file
-now replace `YOUR DISCORD ID, YOUR DISCORD ID 2` with your discord id and replace `YOUR DISCORD ID 2` your dev discord id
-and replace prefix with your discord prefix
+now replace `YOUR DISCORD ID, YOUR DISCORD ID 2` with your discord id and replace `YOUR DISCORD ID 2` your friend discord id
+and replace `prefix` with your discord prefix
 
 ### And Done 🖐️
 
@@ -73,6 +73,20 @@ async function user(message, name) {
 
 user(message, "Kurapika")
 ```
+
+### getChannel
+```js
+this.client.util.getChannel(guild, channel, caseSensitive, wholeWord)
+```
+
+| Name          | Type                                                                                                | Default | Description                                 | Required |
+|---------------|-----------------------------------------------------------------------------------------------------|---------|---------------------------------------------|----------|
+| guild         | [Guild](https://discord.js.org/#/docs/main/stable/class/Guild)                                      | `none`  | Guild to check                              | `true`   |
+| channel       | Snowflake or Channel Name                                                                           | `none`  | may be the channel id or name               | `true`   |
+| caseSensitive | [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | `false` | Makes checking by name case sensitive.      | `false`  |
+| wholeWord     | [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | `false` | Makes finding by name match full word only. | `false`  |
+
+> This may be the same as [resolveChannel](https://discord-akairo.github.io/#/docs/main/master/class/ClientUtil?scrollTo=resolveChannel) but I have kept it simple :)
 
 return [GuildMember](https://discord.js.org/#/docs/main/stable/class/GuildMember)
 ---
