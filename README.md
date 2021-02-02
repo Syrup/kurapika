@@ -2,6 +2,14 @@
 [![Discord Bots](https://top.gg/api/widget/status/707651800072716360.svg)](https://top.gg/bot/707651800072716360)
 [![Discord Bots](https://top.gg/api/widget/upvotes/707651800072716360.svg)](https://top.gg/bot/707651800072716360)
 
+- [Kurapika](#kurapika)
+    - [Tutorial](#tutorial)
+        - [Environment setup](#environment-setup)
+        - [Bot configuration](#bot-configuration)
+    - [Features](#features)
+        - [Send Message As Webhook](#send-message-as-webhook)
+        - [getMember](#getmember)
+
 # Tutorial
 ###### Environment Setup
 rename `.env-example` to `.env`
