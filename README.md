@@ -2,13 +2,20 @@
 [![Discord Bots](https://top.gg/api/widget/status/707651800072716360.svg)](https://top.gg/bot/707651800072716360)
 [![Discord Bots](https://top.gg/api/widget/upvotes/707651800072716360.svg)](https://top.gg/bot/707651800072716360)
 
+# Navigation
+---
 - [Kurapika](#kurapika)
     - [Tutorial](#tutorial)
         - [Environment setup](#environment-setup)
         - [Bot configuration](#bot-configuration)
     - [Features](#features)
         - [Send Message As Webhook](#send-message-as-webhook)
+          - [Example](#example)
         - [getMember](#getmember)
+          - [Example](#example-1)
+        - [getChannel](#getchannel)
+          - [Example](#example-2)
+
 
 # Tutorial
 ###### Environment Setup
@@ -18,8 +25,8 @@ now open `.env` file and fill in each variable according to the instructional
 
 ###### Bot Configuration
 open `config.js` file
-now replace `YOUR DISCORD ID, YOUR DISCORD ID 2` with your discord id and replace `YOUR DISCORD ID 2` your dev discord id
-and replace prefix with your discord prefix
+now replace `YOUR DISCORD ID, YOUR DISCORD ID 2` with your discord id and replace `YOUR DISCORD ID 2` your friend discord id
+and replace `prefix` with your discord prefix
 
 ### And Done 🖐️
 
@@ -30,9 +37,11 @@ and replace prefix with your discord prefix
 this.client.util.webhook(urlWebhook, message, opt)
 ```
 
-- `urlWebhook` - Your Webhook URL
-- `message` - Can be embed or message
-- `opt` - type [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+| Name       | Type                                                                                              | Default | Description             | Required |
+|------------|---------------------------------------------------------------------------------------------------|---------|-------------------------|----------|
+| urlWebhook | **String**                                                                                        | `none`  | Your webhook URL        | `true`   |
+| message    | [MessageEmbed](https://discord.js.org/#/docs/main/stable/class/MessageEmbed) or **String**        | `none`  | Can be embed or message | `true`   |
+| opt        | [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) | `none`  | Options                 | `false`  |
 
 
 #### Example
@@ -59,14 +68,16 @@ return [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 this.client.util.getMember(message, name)
 ```
 
-- message - [Message](https://discord.js.org/#/docs/main/stable/class/Message)
-- name - `User Name` | `Mention`
+| Name    | Type                                                               | Default | Description      | Required |
+|---------|--------------------------------------------------------------------|---------|------------------|----------|
+| message | [Message](https://discord.js.org/#/docs/main/stable/class/Message) | `none`  | message          | `true`   |
+| name    | Snowflake or Username                                              | `none`  | maybe id or name | `true`   |
 
 
 #### Example
 ```js
 (async () => {
-  let member = await this.client.util.getMember(message, "name")
+  let member = await this.client.util.getMember(message, "Syrup")
   return member
 })()
 ```
@@ -74,17 +85,36 @@ this.client.util.getMember(message, name)
 or
 
 ```js
-async function user(msg, name) {
-  const member = await msg.client.util.getMember(msg, name)
+async function user(message, name) {
+  const member = await this.client.util.getMember(message, name)
   return member
 }
 
 user(message, "Kurapika")
 ```
 
-
 return [GuildMember](https://discord.js.org/#/docs/main/stable/class/GuildMember)
 
+### getChannel
+```js
+this.client.util.getChannel(guild, channel, caseSensitive, wholeWord)
+```
+
+#### Example
+```js
+this.client.util.getChannel(message.guild, "general", true)
+```
+
+| Name          | Type                                                                                                | Default | Description                                 | Required |
+|---------------|-----------------------------------------------------------------------------------------------------|---------|---------------------------------------------|----------|
+| guild         | [Guild](https://discord.js.org/#/docs/main/stable/class/Guild)                                      | `none`  | Guild to check                              | `true`   |
+| channel       | Snowflake or Channel Name                                                                           | `none`  | maybe the channel id or name               | `true`   |
+| caseSensitive | [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | `false` | Makes checking by name case sensitive.      | `false`  |
+| wholeWord     | [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | `false` | Makes finding by name match full word only. | `false`  |
+
+> This maybe the same as [resolveChannel](https://discord-akairo.github.io/#/docs/main/master/class/ClientUtil?scrollTo=resolveChannel) but I have kept it simple :)
+
+return [Channel](https://discord.js.org/#/docs/main/stable/class/Channel)
 
 ---
 [![Discord Bots](https://top.gg/api/widget/707651800072716360.svg)](https://top.gg/bot/707651800072716360)
