@@ -2,12 +2,14 @@ const { ClientUtil } = require('discord-akairo');
 const { MessageEmbed } = require('discord.js');
 const prettyMilliseconds = require('pretty-ms');
 const axios = require('axios');
+
+
 class KurapikaClientUtil extends ClientUtil {
 	constructor(client) {
-		super();
-
-		this.client = client;
+		super(client);
+		
 		this.getMember = this.getMember;
+		this.emojis = require("./emojis.json")
 	}
 
 	embed() {
@@ -97,28 +99,14 @@ class KurapikaClientUtil extends ClientUtil {
 		return target;
 	}
 
-	getChannel(msg, channel) {
-		let result;
-		let guildChannel;
-
-		if (channel.startsWith('<#')) {
-			result = /<#(\d+)>/gi.exec(channel)[1];
-			guildChannel = msg.guild.channels.cache.get(result);
-		} else {
-			result = channel;
-
-			guildChannel = msg.guild.channels.cache.find(x => x.name.includes(result));
-		}
-
-		if (!guildChannel)
-			return msg.channel.send({
-				embed: {
-					description: 'Channel Not Found',
-					color: 'RED'
-				}
-			});
-
-		return guildChannel;
+	getChannel(guild, channel, caseSensitive, wholeWord) {
+	  let ch = parseInt(channel)
+	  
+	  if(isNaN(ch)) {
+	    return this.resolveChannel(channel, guild.channels.cache, caseSensitive, wholeWord)
+	  } else {
+	    return guild.channels.cache.get(channel);
+	  }
 	}
 }
 

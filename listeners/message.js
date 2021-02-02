@@ -1,6 +1,8 @@
 const { Listener } = require("discord-akairo");
 const Alexa = require("alexa-bot-api");
 const ai = new Alexa("aw2plm");
+const Levels = require("discord-xp");
+Levels.setURL(process.env.MONGO_USER && process.env.MONGO_PASS ? `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.iknae.mongodb.net/discord?retryWrites=true&w=majority` : "mongodb://localhost/discord")
 
 module.exports = class MessageListener extends Listener {
   constructor() {
@@ -23,6 +25,21 @@ module.exports = class MessageListener extends Listener {
     }
     */
     
+    if(msg.author.bot || !msg.guild) return
+    
+    let xp = Math.floor(Math.random() * 10) + 1
+    let levelUp = await Levels.appendXp(msg.author.id, msg.guild.id, xp)
+    
+    if(levelUp) {
+      let user = await Levels.fetch(msg.author.id, msg.guild.id)
+      let msgLevelUp = this.client.config.levelUp
+      .replace(/{user}/g, `${msg.author}`)
+      .replace(/{server}/g, `${msg.guild}`)
+      .replace(/{userTag}/g, msg.author.tag)
+      .replace(/{level}/g, user.level)
+      
+      msg.channel.send(msgLevelUp)
+    }
     
     let channelID = this.client.db.get(`chat.${msg.guild.id}`);
     

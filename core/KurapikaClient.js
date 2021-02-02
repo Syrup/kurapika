@@ -17,16 +17,8 @@ require('../structures/Message.js');
 // require('../structures/User.js');
 
 module.exports = class KurapikaClient extends AkairoClient {
-	constructor() {
-		super(
-			{
-				ownerID
-			},
-			{
-				disableEveryone: true,
-				disableMentions: 'everyone'
-			}
-		);
+	constructor(...args) {
+		super(...args);
 
 		this.logger = winston.createLogger({
 			transports: [
@@ -52,13 +44,14 @@ module.exports = class KurapikaClient extends AkairoClient {
 			handleEdits: true,
 			storeMessages: true,
 			commandUtil: true,
+			
 			prefix: message => (message.guild ? message.guild.prefix : defaultPrefix)
 		});
 
 		this.listenerHandler = new ListenerHandler(this, {
 			directory: path.join(__dirname, '..', 'listeners/')
 		});
-
+		
 		this.util = new KurapikaClientUtil(this);
 		this.config = config;
 		this.db = db;

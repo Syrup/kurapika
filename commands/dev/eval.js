@@ -3,14 +3,20 @@ const fetch = require('node-fetch');
 const Akairo = require("discord-akairo");
 const Discord = require('discord.js');
 const axios = require("axios");
+const config = require("../../config.js");
 
 class EvalCommand extends Command {
 	constructor() {
 		super('eval', {
 			aliases: ['eval', 'e', 'ev'],
-			ownerOnly: true
+			ownerOnly: true,
+			category: "Dev",
+			description: {
+			  content: "Evaluate Command",
+			  usage: "eval <code>",
+			  example: ["eval 1+1", "eval message.channel.send(\"Hello world\")", "eval msg.channel.send(\"Hello world\")"]
+			}
 		});
-		this.name = "eval"
 	}
 
 	async clean(client, text) {
@@ -37,14 +43,14 @@ class EvalCommand extends Command {
 	hastebin(input, extension) {
 		return new Promise(function(res, rej) {
 			if (!input) rej('[Error] Missing Input');
-			fetch('https://hasteb.in/documents', {
-				method: 'POST',
+			fetch(config.hastebin, {
+			  method: 'POST',
 				body: input
 			})
 				.then(res => res.json())
 				.then(body => {
 					res(
-						'https://hasteb.in/' +
+						config.hastebin.split("documents")[0] +
 							body.key +
 							(extension ? '.' + extension : '')
 					);
