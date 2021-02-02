@@ -74,8 +74,8 @@ this.client.util.getMember(message, name)
 or
 
 ```js
-async function user(message, name) {
-  const member = await this.client.util.getMember(message, name)
+async function user(msg, name) {
+  const member = await msg.client.util.getMember(msg, name)
   return member
 }
 
