@@ -2,14 +2,19 @@
 [![Discord Bots](https://top.gg/api/widget/status/707651800072716360.svg)](https://top.gg/bot/707651800072716360)
 [![Discord Bots](https://top.gg/api/widget/upvotes/707651800072716360.svg)](https://top.gg/bot/707651800072716360)
 
+# Navigation
+---
 - [Kurapika](#kurapika)
     - [Tutorial](#tutorial)
         - [Environment setup](#environment-setup)
         - [Bot configuration](#bot-configuration)
     - [Features](#features)
         - [Send Message As Webhook](#send-message-as-webhook)
+          - [Example](#example)
         - [getMember](#getmember)
+          - [Example](#example-1)
         - [getChannel](#getchannel)
+          - [Example](#example-2)
 
 
 # Tutorial
