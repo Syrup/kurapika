@@ -2,6 +2,9 @@
 [![Discord Bots](https://top.gg/api/widget/status/707651800072716360.svg)](https://top.gg/bot/707651800072716360)
 [![Discord Bots](https://top.gg/api/widget/upvotes/707651800072716360.svg)](https://top.gg/bot/707651800072716360)
 
+### Note
+> Don't forget to do `npm install --save` before running the bot!!!!
+
 # Navigation
 ---
 - [Kurapika](#kurapika)
