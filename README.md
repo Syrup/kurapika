@@ -6,8 +6,9 @@
 ---
 - [Kurapika](#kurapika)
     - [Tutorial](#tutorial)
-        - [Environment setup](#environment-setup)
-        - [Bot configuration](#bot-configuration)
+        - [Environment Setup](#environment-setup)
+        - [Bot Configuration](#bot-configuration)
+        - [Run Bot](#run-bot)
     - [Features](#features)
         - [Send Message As Webhook](#send-message-as-webhook)
           - [Example](#example)
@@ -24,9 +25,13 @@ now open `.env` file and fill in each variable according to the instructional
 
 
 ###### Bot Configuration
-open `config.js` file
+open `config.yml` file in yaml folder
 now replace `YOUR DISCORD ID, YOUR DISCORD ID 2` with your discord id and replace `YOUR DISCORD ID 2` your friend discord id
 and replace `prefix` with your discord prefix
+
+###### Run Bot
+Run the bot with bash command `npm start` or `node index.js`
+
 
 ### And Done 🖐️
 
