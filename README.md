@@ -2,6 +2,9 @@
 [![Discord Bots](https://top.gg/api/widget/status/707651800072716360.svg)](https://top.gg/bot/707651800072716360)
 [![Discord Bots](https://top.gg/api/widget/upvotes/707651800072716360.svg)](https://top.gg/bot/707651800072716360)
 
+### Note
+> Don't forget to do `npm install --save` before running the bot!!!!
+
 # Navigation
 ---
 - [Kurapika](#kurapika)
@@ -27,6 +30,11 @@ now open `.env` file and fill in each variable according to the instructional
 open `config.js` file
 now replace `YOUR DISCORD ID, YOUR DISCORD ID 2` with your discord id and replace `YOUR DISCORD ID 2` your friend discord id
 and replace `prefix` with your discord prefix
+
+###### Run Bot
+Run the bot with bash command `npm start` or `node index.js`
+
+
 
 ### And Done 🖐️
 
