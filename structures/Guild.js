@@ -1,5 +1,4 @@
 const { Structures } = require('discord.js');
-const config = require("../config.js")
 const MusicHandler = require("../core/KurapikaMusicHandler.js")
 
 Structures.extend('Guild', Guild => {
@@ -13,7 +12,7 @@ Structures.extend('Guild', Guild => {
         // Returns the Guild prefix
         // <Guild>.prefix
         get prefix() {
-            return this.get('prefix', config.defaultPrefix);
+            return this.get('prefix', this.client.config.prefix);
         }
 
         // The following methods are all namespaced by Guild ID.

@@ -4,17 +4,20 @@ const {
 	CommandHandler,
 	ListenerHandler
 } = require('discord-akairo');
-const { ownerID, defaultPrefix } = require('../config.js');
-const config = require('../config.js');
+const fs = require('fs');
+let config = require('js-yaml').load(fs.readFileSync('yaml/config.yml'));
+let { ownerID, prefix } = config;
 const { Manager } = require('@lavacord/discord.js');
 const KurapikaClientUtil = require('./KurapikaClientUtil.js');
 const db = require('quick.db');
 const winston = require('winston');
 
-require('../structures/Guild.js');
-require('../structures/GuildMember.js');
-require('../structures/Message.js');
-// require('../structures/User.js');
+const dir = fs.readdirSync('structures');
+
+for (let f of dir) {
+	if (!f.endsWith('.js')) return;
+	require(`../structures/${f}`);
+}
 
 module.exports = class KurapikaClient extends AkairoClient {
 	constructor(...args) {
@@ -25,11 +28,13 @@ module.exports = class KurapikaClient extends AkairoClient {
 				new winston.transports.Console(),
 				new winston.transports.File({ filename: 'log' })
 			],
-			format: winston.format.printf(
-				log => `[${log.level.toUpperCase()}] ${log.message}`
-			)
+			format: winston.format.printf(log => {
+				return `[${log.level.toUpperCase()}] ${log.message}`;
+			})
 		});
-
+		
+		this.sourcebin = require("sourcebin-api");
+		
 		this.manager = new Manager(this, [
 			{
 				id: 'main',
@@ -44,17 +49,32 @@ module.exports = class KurapikaClient extends AkairoClient {
 			handleEdits: true,
 			storeMessages: true,
 			commandUtil: true,
-			
-			prefix: message => (message.guild ? message.guild.prefix : defaultPrefix)
+			prefix: message => (message.guild ? message.guild.prefix : config.prefix),
+			allowMention: true,
+			fetchMembers: true,
+			commandUtil: true,
+			commandUtilSweepInterval: 9e5,
+			handleEdits: true,
+			defaultCooldown: 5e3,
+			argumentDefaults: {
+			  prompt: {
+			    limit: 4,
+			    modifyStart: (msg, str) => `${msg.author}, ${str}\n\n I'm waiting for you in 30 seconds`,
+			    modifyRetry: (msg, _, d) => `${msg.author}, Invalid Argument. Try again, You have ${d.retries} more chances`,
+			    modifyEnded: (msg, _, d) => `${msg.author}, You entered the wrong argument ${d.retries} times, so the command was canceled`,
+			    modifyTimeout: (msg, _) => `${msg.author}, Timeout`
+			  }
+			}
 		});
 
 		this.listenerHandler = new ListenerHandler(this, {
 			directory: path.join(__dirname, '..', 'listeners/')
 		});
-		
+
 		this.util = new KurapikaClientUtil(this);
 		this.config = config;
 		this.db = db;
+		this.fetch = require('node-fetch');
 	}
 
 	async login(token) {

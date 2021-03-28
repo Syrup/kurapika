@@ -3,13 +3,12 @@ const { MessageEmbed } = require('discord.js');
 const prettyMilliseconds = require('pretty-ms');
 const axios = require('axios');
 
-
 class KurapikaClientUtil extends ClientUtil {
 	constructor(client) {
 		super(client);
-		
+
 		this.getMember = this.getMember;
-		this.emojis = require("./emojis.json")
+		this.emojis = require('./emojis.json');
 	}
 
 	embed() {
@@ -100,14 +99,48 @@ class KurapikaClientUtil extends ClientUtil {
 	}
 
 	getChannel(guild, channel, caseSensitive, wholeWord) {
-	  let ch = parseInt(channel)
-	  
-	  if(isNaN(ch)) {
-	    return this.resolveChannel(channel, guild.channels.cache, caseSensitive, wholeWord)
-	  } else {
-	    return guild.channels.cache.get(channel);
-	  }
+		let ch = parseInt(channel);
+
+		if (isNaN(ch)) {
+			return this.resolveChannel(
+				channel,
+				guild.channels.cache,
+				caseSensitive,
+				wholeWord
+			);
+		} else {
+			return guild.channels.cache.get(channel);
+		}
 	}
+
+	toAbbrev(num) {
+		if (!num || isNaN(num)) return '0';
+		if (typeof num === 'string') num = parseInt(num);
+		let decPlaces = Math.pow(10, 1);
+		var abbrev = ['K', 'M', 'B', 'T'];
+		for (var i = abbrev.length - 1; i >= 0; i--) {
+			var size = Math.pow(10, (i + 1) * 3);
+			if (size <= num) {
+				num = Math.round((num * decPlaces) / size) / decPlaces;
+				if (num == 1000 && i < abbrev.length - 1) {
+					num = 1;
+					i++;
+				}
+				num += abbrev[i];
+				break;
+			}
+		}
+		return num;
+	}
+	
+	async fetchNSFWSites(force) {
+		const { data } = await axios.get('https://raw.githubusercontent.com/blocklistproject/Lists/master/porn.txt');
+		let NSFWSites = data.split('\n')
+			.filter(site => site && !site.startsWith('#'))
+			.map(site => site.replace(/^(0.0.0.0 )/, '')); // eslint-disable-line no-control-regex
+		return NSFWSites;
+	}
+	
 }
 
 module.exports = KurapikaClientUtil;

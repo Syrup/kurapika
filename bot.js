@@ -1,6 +1,8 @@
 require('dotenv').config();
 
-const { prefix, ownerID } = require("./config.js");
+const fs = require("fs");
+const yaml = require("js-yaml");
+const { prefix, ownerID } = yaml.load(fs.readFileSync("yaml/config.yml"))
 const path = require("path");
 const KurapikaClient = require('./core/KurapikaClient.js');
 const express = require("express");

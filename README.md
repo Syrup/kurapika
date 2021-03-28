@@ -56,7 +56,7 @@ this.client.util.getMember(message, name)
 | Name    | Type                                                               | Default | Description      | Required |
 |---------|--------------------------------------------------------------------|---------|------------------|----------|
 | message | [Message](https://discord.js.org/#/docs/main/stable/class/Message) | `none`  | message          | `true`   |
-| name    | Snowflake or Username                                              | `none`  | maybe id or name | `true`   |
+| name    | Snowflake or Username                                              | `none`  | may be id or name | `true`   |
 
 
 #### Example
@@ -93,7 +93,7 @@ this.client.util.getChannel(message.guild, "general", true)
 | Name          | Type                                                                                                | Default | Description                                 | Required |
 |---------------|-----------------------------------------------------------------------------------------------------|---------|---------------------------------------------|----------|
 | guild         | [Guild](https://discord.js.org/#/docs/main/stable/class/Guild)                                      | `none`  | Guild to check                              | `true`   |
-| channel       | Snowflake or Channel Name                                                                           | `none`  | maybe the channel id or name               | `true`   |
+| channel       | Snowflake or Channel Name                                                                           | `none`  | may be the channel id or name               | `true`   |
 | caseSensitive | [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | `false` | Makes checking by name case sensitive.      | `false`  |
 | wholeWord     | [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) | `false` | Makes finding by name match full word only. | `false`  |
 

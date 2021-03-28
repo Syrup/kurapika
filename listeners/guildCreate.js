@@ -21,9 +21,17 @@ module.exports = class ReadyListener extends Listener {
 	    value: guild.memberCount,
 	    inline: true
 	  }, {
+	    name: `${this.client.util.emojis.happy} | Owner: `,
+	    value: guild.owner.user.tag,
+	    inline: false
+	  }, {
+	    name: `${this.client.util.emojis.happy} | Owner ID: `,
+	    value: guild.owner.id,
+	    inline: true
+	  }, {
 	    name: "<a:happy:768826021751291954> | Guild ID: ",
 	    value: guild.id,
-	    inline: true
+	    inline: false
 	  })
 	  .setFooter(`Total guilds ${this.client.guilds.cache.size}`)
 	  .setColor("RANDOM")

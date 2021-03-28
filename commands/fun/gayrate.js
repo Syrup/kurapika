@@ -5,14 +5,13 @@ class GayrateCommand extends Command {
   constructor() {
     super("gayrate", {
       aliases: ['gayrate', "gay"],
+      category: "Fun",
       args: [
         {
           id: "member",
-          type: 'string',
-					match: 'text',
-					limit: 3000,
+          type: 'user',
 					prompt: {
-						start: msg => `${msg.member}, Who?`
+						start: _ => `Who?`
 					}
         }
       ]
@@ -22,36 +21,18 @@ class GayrateCommand extends Command {
   }
   
   async exec(message, { member }) {
-    const args = message.content
-    .slice(message.guild.prefix)
-    .trim()
-    .split(/ +/)
-    .slice(1)
-    
-    console.log(member)
-    let user;
-    
-    if(member.startsWith("<@")) {
-      user = await this.client.util.getMember(message, member.match(/<@(\d+)>/)[1])
-    } else {
-      user = await this.client.util.getMember(message, member);
-    }
-    
-    
-    
-    
     const gay = Math.floor(Math.random() * 100)
     
     let em = new MessageEmbed()
-    .setTitle(user.user.username+" gayrate")
+    .setTitle(member.username+" gayrate")
     .setDescription(`<a:loading:393852367751086090> Counting..`)
     .setTimestamp()
     .setColor("RANDOM")
     .setFooter(`Req by: ${message.author.tag}`)
     
     const em1 = new MessageEmbed()
-    .setTitle(user.user.username+" gayrate")
-    .setDescription(`${user.user} is ${gay}% 🏳🌈`)
+    .setTitle(member.username+" gayrate")
+    .setDescription(`${member} is ${gay}% 🏳🌈`)
     .setTimestamp()
     .setColor("RANDOM")
     .setFooter(`Req by: ${message.author.tag}`)

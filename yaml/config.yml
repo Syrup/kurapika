@@ -1,0 +1,16 @@
+# Your Discord ID here
+ownerID:
+  - "681843628317868049"
+  - "744822067740016640"
+# ----------------
+# Your prefix here
+prefix: "ku."
+# ----------------
+# u can use {user} for user mention {server} for server name {userTag} for user tag {level} for level
+levelUp: "Congrulations {user}, You just level up **{level}** 🎉"
+# ----------------
+# ur hastebin URL, make sure to add /documents at the end
+hastebin: "https://hastebin.com/documents"
+# ----------------
+# this maybe very useless 😂
+statusWebhook: "https://discord.com/api/webhooks/802144281276055552/DdL5isTKmQHlT37FdCA8LLCx-hxdtR8kkD-WoSGwP-HEIyRcZ4NIuqdnfysMDH45I8OD"

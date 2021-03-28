@@ -1,0 +1,49 @@
+const { Command } = require('discord-akairo');
+const { MessageEmbed } = require('discord.js');
+const { Menu } = require('discord.js-menu');
+const Levels = require("discord-xp");
+
+class TestCommand extends Command {
+	constructor() {
+		super('test', {
+			aliases: ['test'],
+			ownerOnly: true
+		})
+	}
+
+	async exec(msg) {
+	  const limit = msg.guild.members.cache.size
+	  
+	  const rawLeaderboard = await Levels.fetchLeaderboard(msg.guild.id, limit);
+		const leaderboard = await Levels.computeLeaderboard(
+			msg.client,
+			rawLeaderboard,
+			true
+		);
+		let emb = []
+		
+		for(let [i, e] of leaderboard.entries()) {
+		  let obj = {
+		    name: String(i),
+		    content: new MessageEmbed()
+		    .setTitle(`${msg.guild.name} leaderboards`)
+		    .addField(`${e.position}. ${e.username}#${e.discriminator}`, `XP: ${e.xp}\nLevels: ${e.level}`),
+		    reactions: {
+		      "⬅️": String(i - 1),
+		      "➡️": String(i + 1)
+		    }
+		  }
+		  
+		  emb.push(obj)
+		}
+		
+		console.log(emb[0])
+	  
+	  let helpMenu = new Menu(msg.channel, msg.author.id, emb, 300000)
+	  
+	  
+	  helpMenu.start()
+	}
+}
+
+module.exports = TestCommand;

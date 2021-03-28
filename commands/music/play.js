@@ -18,6 +18,7 @@ class PlayCommand extends Command {
 	  .trim()
 	  .split(/ +/)
 	  .slice(1)
+	  const { disc } = this.client.util.emojis
 	  
 	  const util = this.client.util;
 		const { music } = msg.guild;
@@ -67,7 +68,7 @@ class PlayCommand extends Command {
 					util
 						.embed()
 						.setDescription(
-							`✅ | Loaded \`${tracks.length}\` tracks from **${name}**.`
+							`${disc} | Loaded \`${tracks.length}\` tracks from **${name}**.`
 						)
 				);
 			} else {
@@ -79,7 +80,7 @@ class PlayCommand extends Command {
 						util
 							.embed()
 							.setDescription(
-								`✅ | **${track.info.title}** added to the queue.`
+								`${disc} | **${track.info.title}** added to the queue.`
 							)
 					);
 			}

@@ -3,7 +3,13 @@ const { Command } = require('discord-akairo');
 class BinaryComand extends Command {
 	constructor() {
 		super('binary', {
-			aliases: ['binary', 'bin']
+			aliases: ['binary', 'bin'],
+			category: "Fun",
+			description: {
+			  content: "encode or decode message in binary",
+			  usage: "binary <encode|decode> <text>",
+			  example: ["binary encode hello world"]
+			}
 		});
 		
 		this.name = "binary"

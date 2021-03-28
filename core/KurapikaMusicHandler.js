@@ -60,7 +60,7 @@ module.exports = class KurapikaMusicHandler {
 						util
 							.embed()
 							.setDescription(
-								`🎶 | Now playing **${this.current.info.title}**.`
+								`${this.client.util.emojis.disc} | Now playing **${this.current.info.title}**.`
 							)
 					);
 			})
