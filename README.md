@@ -2,6 +2,25 @@
 [![Discord Bots](https://top.gg/api/widget/status/707651800072716360.svg)](https://top.gg/bot/707651800072716360)
 [![Discord Bots](https://top.gg/api/widget/upvotes/707651800072716360.svg)](https://top.gg/bot/707651800072716360)
 
+### Note
+> Don't forget to do `npm install --save` before running the bot!!!!
+
+# Navigation
+---
+- [Kurapika](#kurapika)
+    - [Tutorial](#tutorial)
+        - [Environment Setup](#environment-setup)
+        - [Bot Configuration](#bot-configuration)
+        - [Run Bot](#run-bot)
+    - [Features](#features)
+        - [Send Message As Webhook](#send-message-as-webhook)
+          - [Example](#example)
+        - [getMember](#getmember)
+          - [Example](#example-1)
+        - [getChannel](#getchannel)
+          - [Example](#example-2)
+
+
 # Tutorial
 ###### Environment Setup
 rename `.env-example` to `.env`
@@ -9,9 +28,13 @@ now open `.env` file and fill in each variable according to the instructional
 
 
 ###### Bot Configuration
-open `config.js` file
+open `config.yml` file in yaml folder
 now replace `YOUR DISCORD ID, YOUR DISCORD ID 2` with your discord id and replace `YOUR DISCORD ID 2` your friend discord id
 and replace `prefix` with your discord prefix
+
+###### Run Bot
+Run the bot with bash command `npm start` or `node index.js`
+
 
 ### And Done 🖐️
 
