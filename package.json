@@ -34,7 +34,7 @@
         "discord.js-menu": "^2.3.1",
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
-        "genius-lyrics": "^4.2.1",
+        "genius-lyrics": "^4.2.7",
         "genius-lyrics-api": "^3.0.6",
         "lavacord": "^1.1.9",
         "mailist": "^1.0.3",
