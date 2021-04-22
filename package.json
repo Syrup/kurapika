@@ -21,7 +21,7 @@
         "@allvaa/get-lyrics": "^1.1.4",
         "@discordjs/opus": "^0.4.0",
         "@lavacord/discord.js": "0.0.7",
-        "alexa-bot-api": "^0.2.1",
+        "alexa-bot-api": "^2.0.5",
         "axios": "^0.21.1",
         "canvacord": "^5.0.8",
         "captcha-canvas": "^2.2.2",
