@@ -26,7 +26,7 @@
         "canvacord": "^5.0.8",
         "captcha-canvas": "^2.2.2",
         "child_process": "^1.0.2",
-        "common-tags": "^1.8.0",
+        "common-tags": "^1.8.2",
         "discord-akairo": "8.1.0",
         "discord-canvas": "^1.4.1",
         "discord-xp": "^1.1.7",
