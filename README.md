@@ -1,6 +1,7 @@
 # ❗ARCHIVE
 will create a new repository for the slash command.
-Done: https://github.com/Syrup/kurapika-update2/
+
+Done: https://github.com/Syrup/kurapika-update/
 
 ---
 
